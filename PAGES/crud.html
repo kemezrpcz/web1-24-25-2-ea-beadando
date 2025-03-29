@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Táblázat</title>
+    <link rel="stylesheet" href="/CSS/main.css">
+    <link rel="stylesheet" href="/CSS/crud.css">
+</head>
+<body>
+    <header>
+        <h1>Web-programozás-1 Előadás Házi feladat</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/PAGES/index.html">Kezdőlap</a></li>
+            <li><a href="/PAGES/crud.html" class="active">CRUD Táblázat</a></li>
+            <li><a href="/PAGES/page3.html">Page 3</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <aside>
+            <h1>Művelet kiválasztása</h1>
+            <table>
+                <tr>
+                    <td><button id="btCreate" onclick="changePanel(1)">Create</button></td>
+                    <td><button id="btRead" onclick="changePanel(2)">Read</button></td>
+                </tr>
+                <tr>
+                    <td><button id="btUpdate" onclick="changePanel(3)">Update</button></td>
+                    <td><button id="btDelete" onclick="changePanel(4)">Delete</button></td>
+                </tr>
+            </table>
+            <form id="crudMenu">
+                <label for="id" class="top-label" id="lId">Azonosító</label>
+                <input type="number" id="id" autocomplete="off">
+
+                <label for="name" id="lName">Név</label>
+                <input type="text" id="name" maxlength="70" autocomplete="off">
+
+                <label for="age" id="lAge">Kor</label>
+                <input type="number" id="age" autocomplete="off" minlength="2" maxlength="3">
+
+                <label for="email" id="lEmail">Email</label>
+                <input type="text" id="email" maxlength="255" autocomplete="off">
+                
+                <button type="submit" id="btAction">Create</button>
+            </form>
+        </aside>
+        
+        <section>
+            <h1>Adatbázis</h1>
+            
+            <article></article>
+        </section>
+    </div>
+
+    <footer>
+        <h3>Készítette:</h3>
+        <h5>Tari Gergely - K1L4WM</h5>
+    </footer>
+
+    <script src="/JS/main.js"></script>
+    <script src="/JS/crud.js"></script>
+</body>
+</html>

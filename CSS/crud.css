@@ -1,0 +1,90 @@
+.main-content aside {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.main-content aside h1 {
+    padding: 20px;
+}
+
+/*  TOP BUTTONS */
+
+.main-content aside table {
+    border: 2px solid white;
+    width: 75%;
+    margin-bottom: 25px;
+}
+
+.main-content aside table button {
+    width: 100%;
+    outline: 0;
+    border: 0;
+    color: white;
+    background-color: black;
+    font-size: 17px;
+    padding: 5px;
+    text-shadow: 0 0 5px black;
+    box-shadow: inset 0 0 25px white;
+}
+
+.main-content aside table button:hover {
+    background-color: white;
+    text-shadow: 0 0 25px white;
+    box-shadow: inset 0 0 100px black;
+}
+
+/*  MENU */
+
+.main-content aside form {
+    display: none;
+    flex-direction: column;
+    /*border: 3px solid white;*/
+    border-radius: 10px;
+    width: 75%;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.main-content aside form label {
+    font-size: 25px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    padding: 5px 0;
+}
+
+.main-content aside form .top-label {
+    margin-top: 0;
+}
+
+.main-content aside form input {
+    font-size: 15px;
+    padding: 5px;
+    box-shadow: inset 0 0 8px;
+    border: 0;
+    text-align: center;
+}
+
+input:focus {
+    outline: none;
+}
+
+.main-content aside form button {
+    outline: 0;
+    border: 0;
+    color: white;
+    background-color: black;
+    font-size: 17px;
+    padding: 5px;
+    margin-top: 15px;
+    text-shadow: 0 0 5px black;
+    box-shadow: inset 0 0 25px white;
+}
+
+.main-content aside form button:hover {
+    background-color: white;
+    text-shadow: 0 0 25px white;
+    box-shadow: inset 0 0 100px black;
+}
+
