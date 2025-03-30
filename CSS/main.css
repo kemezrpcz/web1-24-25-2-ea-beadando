@@ -62,12 +62,13 @@ nav ul li .active {
     display: flex;
     height: 100%;
     width: 100%;
+    align-items: flex-start;
 }
 
 .main-content section {
     display: flex;
     flex: 1;
-    border: 2px solid white;
+    /*border: 2px solid white;*/
     justify-content: center;
 }
 
@@ -75,7 +76,7 @@ nav ul li .active {
     display: flex;
     justify-content: center;
     flex: 0.3;
-    border: 2px solid white;
+    /*border: 2px solid white;*/
 }
 
 /*  FOOTER  */

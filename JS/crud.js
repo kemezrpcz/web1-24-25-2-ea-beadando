@@ -1,8 +1,8 @@
 const menu = document.getElementById("crudMenu");
 const btCreate = document.getElementById("btCreate");
 const btRead = document.getElementById("btRead");
-const btUpdate = document.getElementById("btUpdate");
-const btDelete = document.getElementById("btDelete");
+
+const dataList = document.getElementById("dataList");
 
 const lId = document.getElementById("lId");
 const lName = document.getElementById("lName");
@@ -16,13 +16,15 @@ const inputEmail = document.getElementById("email");
 
 const btAction = document.getElementById("btAction");
 
-const btTable = [btCreate, btRead, btUpdate, btDelete]
+const btTable = [btCreate, btRead]
 const formTable = [
     [lId, inputId],
     [lName, inputName],
     [lAge, inputAge],
     [lEmail, inputEmail],
 ];
+
+let data = [];
 
 let panel = 0;
 
@@ -31,17 +33,15 @@ function changePanel(num) {
         panel = 0;
     }
     else {
-        let lastPanel = panel;
         panel = num;
-
-        if (panel != 0) {
-            btTable.forEach((button) => {
-                button.style.backgroundColor = "black"; 
-            });
-
-            btTable[num - 1].style.backgroundColor = "indigo"; 
-        }
     }
+
+    btTable.forEach((button) => {
+        button.style.backgroundColor = "black"; 
+    });
+    
+    if (panel != 0)
+        btTable[num - 1].style.backgroundColor = "indigo"; 
 
     showPanel();
 }
@@ -50,21 +50,12 @@ function showPanel() {
     switch(panel) {
         case 1: { // Create
             showCreatePanel();
+            inputId.placeholder = data.length + 1;
             break;
         }
 
         case 2: { // Read
             showReadPanel();
-            break;
-        }
-
-        case 3: { // Update
-            showUpdatePanel();
-            break;
-        }
-        
-        case 4: { // Delete
-            showDeletePanel();
             break;
         }
 
@@ -101,37 +92,34 @@ function showReadPanel() {
     inputAge.style.display = "none";
     inputEmail.style.display = "none";
     btAction.style.display = "none";
-
-    lId.textContent = "A beolvasás sikeresen megtörtént";
 }
 
-function showUpdatePanel() {
-    lId.textContent = "Azonosító";
+function checkCreateData() {
+    let valid = true;
+    let errors = document.getElementsByClassName("textErrors");
+    
+    for (let i = 0; i < 3; i++) {
+        if (formTable[i + 1][1].value == "") {
+            errors[i].style.display = "block";
+            valid = false;
+        }
+        else
+            errors[i].style.display = "none";
+    }
 
-    menu.style.display = "flex";
-    lId.style.display = "";
-    lName.style.display = "";
-    lAge.style.display = "";
-    lEmail.style.display = "";
-    inputId.style.display = "";
-    inputName.style.display = "";
-    inputAge.style.display = "";
-    inputEmail.style.display = "";
-    btAction.style.display = "";
-    btAction.textContent = "Update";
+    return valid;
 }
 
-function showDeletePanel() {
-    lId.textContent = "Azonosító";
+function dataCreated() {
+    if (checkCreateData()) {
+        menu.style.backgroundColor = "red";
+    }
+}
 
-    menu.style.display = "flex";
-    lName.style.display = "none";
-    lAge.style.display = "none";
-    lEmail.style.display = "none";
-    inputId.style.display = "";
-    inputName.style.display = "none";
-    inputAge.style.display = "none";
-    inputEmail.style.display = "none";
-    btAction.style.display = "";
-    btAction.textContent = "Delete";
+function dataRead() {
+    if (data.length === 0)
+        lId.textContent = "A tábla üres";
+    else {
+        lId.textContent = "A beolvasás sikeresen megtörtént";
+    }
 }
