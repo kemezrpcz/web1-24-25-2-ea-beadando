@@ -84,13 +84,14 @@ nav ul li .active {
 footer {
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: relative;
     bottom: 0;
     height: 100px;
     width: 100%;
     border: 2px solid white;
     text-align: center;
     top: 100%;
+    margin-top: 150px;
 }
 
 footer h3 {

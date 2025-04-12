@@ -27,6 +27,7 @@ const formTable = [
 let data = [];
 
 let panel = 0;
+let dataShowed = false;
 
 function changePanel(num) {
     if (panel === num) {
@@ -97,9 +98,31 @@ function showReadPanel() {
 function checkCreateData() {
     let valid = true;
     let errors = document.getElementsByClassName("textErrors");
-    
-    for (let i = 0; i < 3; i++) {
-        if (formTable[i + 1][1].value == "") {
+
+    if (data.length > 0) {
+        for (let i = 0; i < data.length; i++) {
+            if (formTable[0][1].value == data[i][0]) {
+                errors[0].style.display = "block";
+                valid = false;
+            }
+        }
+
+        if (valid && errors[0].style.display === "block")
+            errors[0].style.display = "none";
+    }
+
+    if (formTable[0][1].value != "" && formTable[0][1].value < 1) {
+        errors[0].textContent = "A megadott ID helytelen!";
+        errors[0].style.display = "block";
+        valid = false;
+    }
+    else if (formTable[0][1].value != "" || formTable[0][1].value > 0) {
+        errors[0].textContent = "A megadott ID már létezik!";
+        //errors[0].style.display = "none";
+    }
+
+    for (let i = 1; i < 4; i++) {
+        if (formTable[i][1].value == "") {
             errors[i].style.display = "block";
             valid = false;
         }
@@ -112,7 +135,46 @@ function checkCreateData() {
 
 function dataCreated() {
     if (checkCreateData()) {
-        menu.style.backgroundColor = "red";
+        let table = document.getElementById("dataList").getElementsByTagName("tbody")[0];
+        let newData = getNewData();
+        let newRow = table.insertRow();
+
+        if (!newData) return;
+
+        data.push(newData);
+
+        for (let i = 0; i < newData.length; i++) {
+            let cell = newRow.insertCell();
+            cell.textContent = newData[i];
+        }
+
+        let actionCell = newRow.insertCell();
+        let btnEdit = document.createElement("button");
+
+        let icon = document.createElement("i");
+        icon.classList.add("fa", "fa-pen");
+        btnEdit.appendChild(icon);
+
+        let btnDelete = document.createElement("button");
+
+        let icon2 = document.createElement("i");
+        icon2.classList.add("fa", "fa-trash");
+        btnDelete.appendChild(icon2);
+        btnDelete.onclick = function () {
+            let row = this.parentNode.parentNode; // td majd tr szülőjére megy vissza
+    
+            row.remove();
+            data.splice(row.firstChild.textContent - 1, 1);
+        }
+
+        actionCell.appendChild(btnEdit);
+        actionCell.appendChild(btnDelete);
+
+        inputId.placeholder = data.length + 1;
+        for (let i = 0; i < formTable.length; i++) {
+            formTable[i][1].value = "";
+        }
+
     }
 }
 
@@ -120,6 +182,69 @@ function dataRead() {
     if (data.length === 0)
         lId.textContent = "A tábla üres";
     else {
-        lId.textContent = "A beolvasás sikeresen megtörtént";
+        {
+            let table = document.getElementById("dataList").querySelector("tbody");
+            if (!table) return;
+            if (table.firstChild) {
+                while (table.firstChild) {
+                    table.removeChild(table.firstChild);
+                }
+            }
+        }
+        if (!dataShowed){
+            let table = document.getElementById("dataList").getElementsByTagName("tbody")[0];
+            
+            for (let i = 0; i < data.length; i++) {
+                let newRow = table.insertRow();
+
+                for (let j = 0; j < data[i].length; j++) {
+                    let cell = newRow.insertCell();
+                    cell.textContent = data[i][j];
+                }
+
+                let actionCell = newRow.insertCell();
+                let btnEdit = document.createElement("button");
+
+                let icon = document.createElement("i");
+                icon.classList.add("fa", "fa-pen");
+                btnEdit.appendChild(icon);
+
+                let btnDelete = document.createElement("button");
+
+                let icon2 = document.createElement("i");
+                icon2.classList.add("fa", "fa-trash");
+                btnDelete.appendChild(icon2);
+                btnDelete.onclick = function () {
+                    let row = this.parentNode.parentNode;
+                    row.remove();
+                }
+
+                actionCell.appendChild(btnEdit);
+                actionCell.appendChild(btnDelete);
+
+                dataShowed = true;
+                lId.textContent = "A beolvasás megtörtént";
+            }
+        }
+        else {
+            let table = document.getElementById("dataList").querySelector("tbody");
+            if (!table) return;
+
+            while (table.firstChild) {
+                table.removeChild(table.firstChild);
+            }
+
+            dataShowed = false;
+        }
     }
+}
+
+function getNewData() {
+    let datas = [];
+    for (let i = 0; i < formTable.length; i++) {
+        if (i === 0) datas.push(data.length + 1);
+        else datas.push(formTable[i][1].value);
+    }
+
+    return datas;
 }
