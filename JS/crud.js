@@ -28,6 +28,7 @@ let data = [];
 
 let panel = 0;
 let dataShowed = false;
+let editOrCreate = 0; // 0 create -- 1 edit gomb
 
 function changePanel(num) {
     if (panel === num) {
@@ -52,6 +53,7 @@ function showPanel() {
         case 1: { // Create
             showCreatePanel();
             inputId.placeholder = data.length + 1;
+            editOrCreate = 0;
             break;
         }
 
@@ -69,6 +71,11 @@ function showPanel() {
 
 function showCreatePanel() {
     lId.textContent = "Azonosító";
+
+    for (let i = 1; i < formTable.length; i++) {
+        formTable[i][1].placeholder = "";
+        formTable[i][1].value = "";
+    }
 
     menu.style.display = "flex";
     lId.style.display = "";
@@ -134,43 +141,67 @@ function checkCreateData() {
 }
 
 function dataCreated() {
-    if (checkCreateData()) {
-        let table = document.getElementById("dataList").getElementsByTagName("tbody")[0];
-        let newData = getNewData();
-        let newRow = table.insertRow();
+    switch (editOrCreate) {
+        case 0: {   // create
 
-        if (!newData) return;
-
-        data.push(newData);
-
-        for (let i = 0; i < newData.length; i++) {
-            let cell = newRow.insertCell();
-            cell.textContent = newData[i];
-        }
-
-        let actionCell = newRow.insertCell();
-        let btnEdit = document.createElement("button");
-
-        let icon = document.createElement("i");
-        icon.classList.add("fa", "fa-pen");
-        btnEdit.appendChild(icon);
-        btnEdit.onclick = (e) => rowEdit(e.target.closest("tr"));
-
-        let btnDelete = document.createElement("button");
-
-        let icon2 = document.createElement("i");
-        icon2.classList.add("fa", "fa-trash");
-        btnDelete.appendChild(icon2);
-        btnDelete.onclick = (e) => rowDelete(e.target.closest("tr"));
+            if (checkCreateData()) {
+                let table = document.getElementById("dataList").getElementsByTagName("tbody")[0];
+                let newData = getNewData();
+                let newRow = table.insertRow();
         
-        actionCell.appendChild(btnEdit);
-        actionCell.appendChild(btnDelete);
+                if (!newData) return;
+        
+                data.push(newData);
+        
+                for (let i = 0; i < newData.length; i++) {
+                    let cell = newRow.insertCell();
+                    cell.textContent = newData[i];
+                }
+        
+                let actionCell = newRow.insertCell();
+                let btnEdit = document.createElement("button");
+        
+                let icon = document.createElement("i");
+                icon.classList.add("fa", "fa-pen");
+                btnEdit.appendChild(icon);
+                btnEdit.onclick = (e) => rowEdit(e.target.closest("tr"));
+        
+                let btnDelete = document.createElement("button");
+        
+                let icon2 = document.createElement("i");
+                icon2.classList.add("fa", "fa-trash");
+                btnDelete.appendChild(icon2);
+                btnDelete.onclick = (e) => rowDelete(e.target.closest("tr"));
+                
+                actionCell.appendChild(btnEdit);
+                actionCell.appendChild(btnDelete);
+        
+                inputId.placeholder = data.length + 1;
+                for (let i = 0; i < formTable.length; i++) {
+                    formTable[i][1].value = "";
+                }
+        
+            }
 
-        inputId.placeholder = data.length + 1;
-        for (let i = 0; i < formTable.length; i++) {
-            formTable[i][1].value = "";
+            break;
         }
+        case 1: {   // edit
+            
+            if (checkCreateData) {
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i][0] == formTable[0][1].placeholder) {
+                        for (let j = 0; j < data[i].length; j++) {
+                            if (formTable[j][1] != "")
+                                data[i][j] = formTable[j][1].value;
+                        }
+                    }
+                }
 
+                dataRead();
+            }
+
+            break;
+        }
     }
 }
 
@@ -217,7 +248,7 @@ function dataRead() {
                 actionCell.appendChild(btnDelete);
 
                 dataShowed = true;
-                lId.textContent = "A beolvasás megtörtént";
+                //lId.textContent = "A beolvasás megtörtént";
             }
         }
         else {
@@ -262,6 +293,7 @@ function rowDelete(row) {
 function rowEdit(row) {
     showCreatePanel();
     btAction.textContent = "Edit";
+    editOrCreate = 1;
     
     for (let i = 0; i < data.length; i++) {
         if (data[i][0] == row.firstChild.textContent){
