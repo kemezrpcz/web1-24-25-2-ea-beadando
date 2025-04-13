@@ -154,19 +154,15 @@ function dataCreated() {
         let icon = document.createElement("i");
         icon.classList.add("fa", "fa-pen");
         btnEdit.appendChild(icon);
+        btnEdit.onclick = (e) => rowEdit(e.target.closest("tr"));
 
         let btnDelete = document.createElement("button");
 
         let icon2 = document.createElement("i");
         icon2.classList.add("fa", "fa-trash");
         btnDelete.appendChild(icon2);
-        btnDelete.onclick = function () {
-            let row = this.parentNode.parentNode; // td majd tr szülőjére megy vissza
-    
-            row.remove();
-            data.splice(row.firstChild.textContent - 1, 1);
-        }
-
+        btnDelete.onclick = (e) => rowDelete(e.target.closest("tr"));
+        
         actionCell.appendChild(btnEdit);
         actionCell.appendChild(btnDelete);
 
@@ -208,16 +204,14 @@ function dataRead() {
                 let icon = document.createElement("i");
                 icon.classList.add("fa", "fa-pen");
                 btnEdit.appendChild(icon);
+                btnEdit.onclick = (e) => rowEdit(e.target.closest("tr"));
 
                 let btnDelete = document.createElement("button");
 
                 let icon2 = document.createElement("i");
                 icon2.classList.add("fa", "fa-trash");
                 btnDelete.appendChild(icon2);
-                btnDelete.onclick = function () {
-                    let row = this.parentNode.parentNode;
-                    row.remove();
-                }
+                btnDelete.onclick = (e) => rowDelete(e.target.closest("tr"));
 
                 actionCell.appendChild(btnEdit);
                 actionCell.appendChild(btnDelete);
@@ -242,9 +236,40 @@ function dataRead() {
 function getNewData() {
     let datas = [];
     for (let i = 0; i < formTable.length; i++) {
-        if (i === 0) datas.push(data.length + 1);
+        if (i === 0) {
+            if (formTable[i][1].value === "") // ID ellenőrzés nem tökéletes
+                datas.push(data.length + 1);
+            else
+                datas.push(formTable[i][1].value);
+        }
         else datas.push(formTable[i][1].value);
     }
 
     return datas;
+}
+
+function rowDelete(row) {
+
+    row.remove();
+    for (let i = 0; i < data.length; i++) {
+        if (data[i][0] == row.firstChild.textContent) {
+            data.splice(i, 1);
+            break;
+        }
+    }
+}
+
+function rowEdit(row) {
+    showCreatePanel();
+    btAction.textContent = "Edit";
+    
+    for (let i = 0; i < data.length; i++) {
+        if (data[i][0] == row.firstChild.textContent){
+            for (let j = 0; j < formTable.length; j++) {
+                formTable[j][1].placeholder = data[i][j];
+            }
+            
+            break;
+        }
+    }
 }
