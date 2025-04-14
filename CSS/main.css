@@ -68,7 +68,6 @@ nav ul li .active {
 .main-content section {
     display: flex;
     flex: 1;
-    /*border: 2px solid white;*/
     justify-content: center;
 }
 
@@ -76,7 +75,6 @@ nav ul li .active {
     display: flex;
     justify-content: center;
     flex: 0.3;
-    /*border: 2px solid white;*/
 }
 
 /*  FOOTER  */
@@ -84,14 +82,12 @@ nav ul li .active {
 footer {
     display: flex;
     flex-direction: column;
-    position: relative;
+    position: absolute;
     bottom: 0;
     height: 100px;
     width: 100%;
     border: 2px solid white;
     text-align: center;
-    top: 100%;
-    margin-top: 150px;
 }
 
 footer h3 {

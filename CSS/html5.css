@@ -1,0 +1,35 @@
+.main-content aside {
+    display: flex;
+    flex-direction: column;
+    flex: 0.11;
+    align-items: center;
+    border: 0;
+}
+
+.main-content aside ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.main-content aside ul li {
+    display: flex;
+    border-bottom: 3px solid white;
+    border-radius: 5px;
+    margin-bottom: 3px;
+}
+
+.main-content aside ul li button {
+    border: 0;
+    outline: 0;
+    font-size: 15px;
+    background-color: inherit;
+    color: white;
+    padding: 5px;
+    flex: 1;
+}
+
+.main-content aside ul li:hover {
+    background-color: blueviolet;
+}

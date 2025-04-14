@@ -17,19 +17,18 @@
         <ul>
             <li><a href="/PAGES/index.html">Kezdőlap</a></li>
             <li><a href="/PAGES/crud.html" class="active">CRUD Táblázat</a></li>
-            <li><a href="/PAGES/page3.html">Page 3</a></li>
+            <li><a href="/PAGES/html5.html">HTML 5</a></li>
         </ul>
     </nav>
 
     <div class="main-content">
         <aside>
             <h1>Művelet kiválasztása</h1>
-            <table>
-                <tbo>
-                    <td><button id="btCreate" onclick="changePanel(1)">Create</button></td>
-                    <td><button id="btRead" onclick="dataRead();changePanel(2)">Read</button></td>
-                </tr>
-            </table>
+            <div class="mainButtons">
+                <button id="btCreate" onclick="changePanel(1)">Új</button>
+                <button id="btRead" onclick="dataRead();changePanel(2)">Megjelenítés</button>
+            </div>   
+            
             <form id="crudMenu" onsubmit="event.preventDefault()">
                 <label for="id" class="top-label" id="lId">Azonosító</label>
                 <label id="idError" class="textErrors">A megadott ID már létezik!</label>
@@ -52,12 +51,19 @@
         </aside>
         
         <section>
+        <!--
+            <div class="searchbar">
+                <input type="text" placeholder="Keresés a táblázatban.">
+                <button>Keresés</button>
+            </div>
+        -->
+
             <table id="dataList">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Age</th>
+                        <th>ID</th>
+                        <th>Név</th>
+                        <th>Kor</th>
                         <th>Email</th>
                         <th>Opciók</th>
                     </tr>

@@ -191,13 +191,16 @@ function dataCreated() {
                 for (let i = 0; i < data.length; i++) {
                     if (data[i][0] == formTable[0][1].placeholder) {
                         for (let j = 0; j < data[i].length; j++) {
-                            if (formTable[j][1] != "")
+                            if (formTable[j][1].value !== "")
                                 data[i][j] = formTable[j][1].value;
+                            else 
+                                data[i][j] = formTable[j][1].placeholder;
                         }
                     }
                 }
 
                 dataRead();
+                editOrCreate = 0;
             }
 
             break;
