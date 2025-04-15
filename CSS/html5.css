@@ -1,3 +1,5 @@
+/*      SUBNAV      */
+
 .main-content aside {
     display: flex;
     flex-direction: column;
@@ -11,6 +13,7 @@
     display: flex;
     flex-direction: column;
     margin-top: 50px;
+    width: fit-content;
 }
 
 .main-content aside ul li {
@@ -26,10 +29,240 @@
     font-size: 15px;
     background-color: inherit;
     color: white;
-    padding: 5px;
     flex: 1;
+    padding: 10px;
 }
 
 .main-content aside ul li:hover {
     background-color: blueviolet;
+}
+
+/*      0. feladat      */
+
+.main-content section article {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: 75%;
+    height: 400px;
+    margin-top: 20px;
+}
+
+.main-content section #f0 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.main-content section #f0 h3 {
+    margin-top: 50px;
+    padding: 15px;
+}
+
+.main-content section #f0 p {
+    margin: 25px;
+    padding: 5px;
+}
+
+.main-content section #f0 .savedData {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content section #f0 .notSavedData {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    margin-bottom: 40px;
+}
+
+.main-content section #f0 label {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+}
+
+.main-content section #f0 input {
+    padding: 5px;
+    font-size: 17px;
+    margin: 5px;
+}
+
+/*      1. Feladat      */
+
+.main-content section #f1 {
+    text-align: center;
+}
+
+.main-content section #f1 h3 {
+    padding: 15px;
+    margin: 15px;
+}
+
+.main-content section #f1 h4 {
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.main-content section #f1 p {
+    margin: 15px;
+    padding: 20px;
+}
+
+.main-content section #f1 input {
+    font-size: 20px;
+    text-align: left;
+    padding: 5px;
+}
+
+.main-content section #f1 button {
+    font-size: 20px;
+    outline: none;
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: inherit;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+}
+
+.main-content section #f1 button:hover {
+    background-color: indigo;
+    font-weight: bold;
+}
+
+/*      3. Feladat      */
+
+.main-content section #f2 {
+    text-align: center;
+}
+
+.main-content section #f2 #f2OutPut {
+    font-family: monospace;
+    background: #f0f0f0;
+    color: black;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 15px 0;
+    width: 250px;
+}
+
+.main-content section #f2 h3 {
+    padding: 10px;
+    margin: 10px;
+}
+
+.main-content section #f2 p {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.main-content section #f2 button {
+    padding: 5px;
+    margin: 5px 0;
+    border: 2px white solid;
+    outline: 0;
+    background-color: inherit;
+    color: white;
+}
+
+.main-content section #f2 button:hover {
+    background-color: indigo;
+}
+
+/*      4. Feladat      */
+
+.main-content section #f3 {
+    text-align: center;
+}
+
+.main-content section #f3 h3 {
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.main-content section #f3 p {
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.main-content section #f3 #geoResults {
+    padding: 10px;
+    margin: 10px;
+}
+
+.main-content section #f3 button {
+    outline: 0;
+    border: 2px solid white;
+    background-color: inherit;
+    color: white;
+    padding: 10px;
+    font-size: 15px;
+}
+
+.main-content section #f3 button:hover {
+    background-color: indigo;
+}
+
+/*      5. Feladat      */
+
+.main-content section #f4 h3 {
+    margin-top: 100px;
+}
+
+.main-content section #f4 .dragNdrop {
+    display: flex;
+    flex-direction: row;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.main-content section #f4 #drop1 {
+    border: 1px solid white;
+    height: 215px;
+    width: 255px;
+    padding: 10px;
+    margin-right: 5px;
+}
+
+.main-content section #f4 #drop2 {
+    border:  1px solid white;
+    height: 215px;
+    width: 255px;
+    padding: 10px;
+    margin-left: 5px;
+}
+
+/*      6. Feladat      */
+
+.main-content section #f5 h3 {
+    margin: 100px 0 50px 0;
+}
+
+.main-content section #f5 canvas {
+    border: 2px solid white;
+    margin-top: 25px;
+}
+
+.main-content section #f5 button {
+    border: 2px solid white;
+    outline: 0;
+    font-size: 15px;
+    padding: 10px;
+    margin-top: 25px;
+    background-color: inherit;
+    color: white;
+    width: 75px;
+}
+
+.main-content section #f5 button:hover {
+    background-color: indigo;
+}
+
+/*      7. Feladat      */
+
+.main-content section #f6 #teto {
+    margin-top: 40px;
 }
