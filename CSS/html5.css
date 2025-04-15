@@ -3,7 +3,7 @@
 .main-content aside {
     display: flex;
     flex-direction: column;
-    flex: 0.11;
+    flex: 0.2;
     align-items: center;
     border: 0;
 }
