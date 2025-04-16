@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax menü</title>
+    <link rel="stylesheet" href="/CSS/main.css">
+    <link rel="stylesheet" href="/CSS/ajax.css">
+</head>
+<body>
+    <header>
+        <h1>Web-programozás-1 Előadás Házi feladat</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/PAGES/index.html">Kezdőlap</a></li>
+            <li><a href="/PAGES/crud.html">CRUD Táblázat</a></li>
+            <li><a href="/PAGES/html5.html">HTML 5</a></li>
+            <li><a href="/PAGES/chartjs.html">ChartJS Menü</a></li>
+            <li><a href="/PAGES/ajax.html" class="active">Ajax Menü</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <aside>
+            <h1>Ajax menü</h1>
+        </aside>
+        <section>
+            <article id="read">
+                <h3>Adatok lekérdezése</h3>
+                <button onclick="readData()">Lekérdezés</button>
+                <div id="readData"></div>
+            </article>
+            <article id="create">
+                <h3>Új adat létrehozása</h3>
+                <input type="text" id="name" placeholder="Név">
+                <input type="text" id="height" placeholder="Magasság">
+                <input type="text" id="weight" placeholder="Súly">
+                <button onclick="createData()">Létrehozás</button>
+                <p class="result" id="cResult">Az új adat létrehozva!</p>
+            </article>
+            <article id="update">
+                <h3>Adat módosítása</h3>
+                <div class="uId">
+                    <input type="text" id="uId" placeholder="Id">
+                    <button onclick="getDataForId()">getDataForId</button>
+                </div>
+                <input type="text" id="uName" placeholder="Név">
+                <input type="text" id="uHeight" placeholder="Magasság">
+                <input type="text" id="uWeight" placeholder="Súly">
+                <button onclick="updateData()">Módosítás</button>
+                <p class="result" id="uResult">Az adat módosítva!</p>
+            </article>
+            <article id="delete">
+                <h3>Adat törlése</h3>
+                <input type="text" id="delId" placeholder="Id">
+                <button onclick="deleteData()">Törlés</button>
+                <p class="result" id="dResult">Az adat törölve!</p>
+            </article>
+        </section>
+    </div>
+
+    <footer>
+        <h3>Készítette:</h3>
+        <h5>Tari Gergely - K1L4WM</h5>
+    </footer>
+
+    <script src="/JS/main.js"></script>
+    <script src="/JS/ajax.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+.main-content aside h1 {
+    margin: 50px 0;
+    font-size: 30px;
+}
+
+.main-content section {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.main-content section article {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    margin: 15px 0;
+    font-size: 20px;
+}
+
+.main-content section article input {
+    text-align: center;
+}
+
+.main-content section article button {
+    padding: 5px;
+    margin-top: 15px;
+}
+
+.main-content section article .result {
+    visibility: hidden;
+    font-size: 17px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.main-content section article .uId input{
+    padding: 5px;
+    margin: 10px;
+}
