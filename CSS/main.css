@@ -82,9 +82,9 @@ nav ul li .active {
 footer {
     display: flex;
     flex-direction: column;
-    position: relative;
+    position: absolute;
     left: 0;
-    bottom: 0;
+    top: 100%;
     height: 100px;
     width: 100%;
     border: 2px solid white;

@@ -1,0 +1,19 @@
+.main-content aside h1 {
+    font-size: 30px;
+    margin: 50px 0;
+}
+
+.main-content section h2 {
+    margin: 50px 0;
+}
+
+.main-content section article {
+    display: flex;
+    flex-direction: row;
+}
+
+.main-content section div {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+}
