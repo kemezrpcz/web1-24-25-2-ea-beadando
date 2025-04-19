@@ -26,7 +26,7 @@ const formTable = [
 
 let data = [];
 
-let panel = 0;
+let panel = 0;  // 1 create -- 2 read
 let dataShowed = false;
 let editOrCreate = 0; // 0 create -- 1 edit gomb
 
@@ -212,6 +212,7 @@ function dataRead() {
     if (data.length === 0)
         lId.textContent = "A tábla üres";
     else {
+        lId.textContent = "Adatok megjelenítve";
         {
             let table = document.getElementById("dataList").querySelector("tbody");
             if (!table) return;
@@ -251,7 +252,6 @@ function dataRead() {
                 actionCell.appendChild(btnDelete);
 
                 dataShowed = true;
-                //lId.textContent = "A beolvasás megtörtént";
             }
         }
         else {
@@ -295,7 +295,7 @@ function rowDelete(row) {
 
 function rowEdit(row) {
     showCreatePanel();
-    btAction.textContent = "Edit";
+    btAction.textContent = "Módosítás";
     editOrCreate = 1;
     
     for (let i = 0; i < data.length; i++) {

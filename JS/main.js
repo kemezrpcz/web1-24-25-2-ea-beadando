@@ -1,6 +1,5 @@
 function adjustFooter() {
     const footer = document.querySelector("footer");
-    const main = document.querySelector("main");
     
     if (document.body.scrollHeight > window.innerHeight) {
         footer.style.position = "relative"
