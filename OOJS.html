@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOJS menü</title>
+    <link rel="stylesheet" href="/CSS/main.css">
+    <link rel="stylesheet" href="/CSS/oojs.css">
+</head>
+<body>
+    <header>
+        <h1>Web-programozás-1 Előadás Házi feladat</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Kezdőlap</a></li>
+            <li><a href="crud.html">CRUD Táblázat</a></li>
+            <li><a href="html5.html">HTML 5</a></li>
+            <li><a href="chartjs.html">ChartJS Menü</a></li>
+            <li><a href="ajax.html">Ajax Menü</a></li>
+            <li><a href="OOJS.html" class="active">OOJS Menü</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <aside>
+            <h1>OOJS menü</h1>
+        </aside>
+
+        <section>
+            <article>
+                <div class="employeeCreate">
+                    <p>Employee class</p>
+                    <input type="text" id="eName" placeholder="Név">
+                    <input type="text" id="eAge" placeholder="Kor">
+                    <input type="text" id="ePos" placeholder="Pozíció">
+                    <input type="text" id="eSalary" placeholder="Fizetés">
+                    <button onclick="createEmployee()">Létrehozás</button>
+                </div>
+                <div class="developerCreate">
+                    <p>Developer class</p>
+                    <input type="text" id="dName" placeholder="Név">
+                    <input type="text" id="dAge" placeholder="Kor">
+                    <input type="text" id="dLanguages" placeholder="Programozási nyelvek">
+                    <input type="text" id="dSalary" placeholder="Fizetés">
+                    <button onclick="createDev()">Létrehozás</button>
+                </div>
+            </article>
+            <article>
+                <script>
+                    let employees = [];
+
+                    class Employee {
+                        constructor(name, age, position, salary) {
+                            this.name = name;
+                            this.age = age;
+                            this.position = position;
+                            this.salary = salary;
+                        }
+
+                        showData() {
+                            const div = document.createElement("div");
+                            const h5 = document.createElement("h5");
+                            const p = document.createElement("p");
+
+                            h5.textContent = "Adatok:";
+                            h5.style.margin = "10px 0";
+                            h5.style.fontSize = "17px";
+                            div.appendChild(h5);
+
+                            p.innerText = "Név: " + this.name + "\nKor: " + this.age + "\nPozíció: " + this.position + "\nFizetés: " + this.salary + " $";
+                            div.appendChild(p);
+
+                            div.id = "eDiv";
+                            div.style.border = "2px solid white";
+                            div.style.display = "inline-block";
+                            div.style.padding = "10px";
+                            div.style.margin = "0 10px";
+
+                            document.body.appendChild(div);
+                        }
+                    }
+
+                    class Developer extends Employee {
+                        constructor(name, age, salary, languages) {
+                            super(name, age, "Fejlesztő", salary);
+                            this.languages = languages;
+                        }
+
+                        showData() {
+                            const div = document.createElement("div");
+                            const h5 = document.createElement("h5");
+                            const p = document.createElement("p");
+
+                            h5.textContent = "Adatok:";
+                            h5.style.margin = "10px 0";
+                            h5.style.fontSize = "17px";
+                            div.appendChild(h5);
+
+                            p.innerText = "Név: " + this.name + "\nKor: " + this.age + "\nPozíció: " + this.position + "\nFizetés: " + this.salary + " $\nNyelvek: " + this.languages;
+                            div.appendChild(p);
+
+                            div.id = "dDiv";
+                            div.style.border = "2px solid white";
+                            div.style.display = "inline-block";
+                            div.style.padding = "10px";
+                            div.style.margin = "0 10px";
+
+                            document.body.appendChild(div);
+                        }
+                    }
+
+                    function render() {
+                        let divList = document.querySelectorAll("#eDiv, #dDiv");
+                        divList.forEach(div => div.remove());
+
+                        if (employees.length > 0)
+                            employees.forEach(e => e.showData());
+
+
+                        // Törli a <footer> elemet majd létrehoz egy újat hogy mindig alul legyen.
+                        let delFooter = document.querySelector("footer");
+                        delFooter.remove();
+
+                        const footer = document.createElement("footer");
+                        const h3 = document.createElement("h3")
+                        const h5 = document.createElement("h5");
+
+                        h3.textContent = "Készítette:";
+                        h5.textContent = "Tari Gergely - K1L4WM";
+
+                        footer.appendChild(h3);
+                        footer.appendChild(h5);
+
+                        document.body.appendChild(footer);
+
+                    }
+
+                    function createEmployee() {
+                        const name = document.getElementById("eName").value;
+                        const age = document.getElementById("eAge").value;
+                        const pos = document.getElementById("ePos").value;
+                        const salary = document.getElementById("eSalary").value;
+                        if (name.length > 0 && age.length > 0 && pos.length > 0 && salary.length > 0) {
+
+                        let a = new Employee(name, age, pos, salary);
+                        employees.push(a);
+                        
+                        render();
+                        }
+                        else {
+                            alert("A mezőket ki kell tölteni!");
+                        }
+                    }
+
+                    function createDev() {
+                        const name = document.getElementById("dName").value;
+                        const age = document.getElementById("dAge").value;
+                        const languages = document.getElementById("dLanguages").value;
+                        const salary = document.getElementById("dSalary").value;
+                        if (name.length > 0 && age.length > 0 && languages.length > 0 && salary.length > 0) {
+
+                        let a = new Developer(name, age, languages, salary);
+                        employees.push(a);
+                        
+                        render();
+                        }
+                        else {
+                            alert("A mezőket ki kell tölteni!");
+                        }
+                    }
+                </script>
+            </article>
+        </section>
+    </div>
+
+    <footer>
+        <h3>Készítette:</h3>
+        <h5>Tari Gergely - K1L4WM</h5>
+    </footer>
+
+    <script src="/JS/main.js"></script>
+</body>
+</html>
