@@ -21,17 +21,17 @@
 }
 
 .main-content aside .mainButtons button {
-    outline: 0;
-    border: 0;
+    border: 2px solid white;
     font-size: 20px;
     padding: 5px;
+    margin: 5px 0;
     flex: 1;
+    background-color: inherit;
+    color: white;
 }
 
 .main-content aside .mainButtons button:hover {
-    background-color: white;
-    text-shadow: 0 0 25px white;
-    box-shadow: inset 0 0 100px black;
+    background-color: indigo;
 }
 
 /*  MENU */

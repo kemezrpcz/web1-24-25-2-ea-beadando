@@ -39,11 +39,11 @@ function changePanel(num) {
     }
 
     btTable.forEach((button) => {
-        button.style.backgroundColor = "black"; 
+        button.style.backgroundColor = ""; 
     });
     
     if (panel != 0)
-        btTable[num - 1].style.backgroundColor = "indigo"; 
+        btTable[num - 1].style.backgroundColor = "blueviolet"; 
 
     showPanel();
 }
@@ -87,7 +87,7 @@ function showCreatePanel() {
     inputAge.style.display = "";
     inputEmail.style.display = "";
     btAction.style.display = "";
-    btAction.textContent = "Create";
+    btAction.textContent = "Létrehozás";
 }
 
 function showReadPanel() {

@@ -1,0 +1,36 @@
+.main-content section {
+    display:  flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 20px;
+    padding: 5px;
+}
+
+.main-content section article {
+    margin: 10px 20px;
+    text-align: unset;
+}
+
+.main-content section  #p0 {
+    text-align: left;
+}
+
+.main-content section h3 {
+    margin: 10px 0;
+}
+
+.main-content section #p1 {
+    text-align: right;
+}
+
+.main-content section #p2 {
+    text-align: left;
+}
+
+.main-content section #p3 {
+    text-align: right;
+}
+
+.main-content section #p4 {
+    text-align: left;
+}

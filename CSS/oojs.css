@@ -17,3 +17,21 @@
     flex-direction: column;
     margin: 30px;
 }
+
+.main-content input {
+    font-size: 15px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.main-content button {
+    font-size: 20px;
+    padding: 5px;
+}
+
+.main-content section article div p {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
